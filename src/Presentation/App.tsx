@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
+import { SafeAreaView } from "react-native";
 import LocalizedContextProvider from "./components/LocalizedContext/LocalizedContextProvider";
+import LocalizedText from "./components/LocalizedText/LocalizedText";
 import translations from './translation/translations.json';
 
 export default class App extends Component {
@@ -8,7 +9,11 @@ export default class App extends Component {
     render() {
         return (
             <LocalizedContextProvider initialLanguage='fr' supportedLanguages={['fr', 'en']} translations={translations}>
-                <Text>Bonsoir</Text>
+                <SafeAreaView>
+                    <LocalizedText>
+                        welcome
+                    </LocalizedText>
+                </SafeAreaView>
             </LocalizedContextProvider>
         );
     }
