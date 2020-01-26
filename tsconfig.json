@@ -15,7 +15,9 @@
         "noUnusedParameters": true,
         "alwaysStrict": true,
         "pretty": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }

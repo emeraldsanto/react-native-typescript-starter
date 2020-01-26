@@ -1,6 +1,11 @@
 {
-    "welcome" : {
-        "fr" : "Bienvenue",
-        "en" : "Welcome"
+    "welcomeToStarter" : {
+        "fr" : "Bienvenue à Starter!",
+        "en" : "Welcome to Starter!"
+    },
+
+    "dependencyList" : {
+        "fr" : "Ce projet est un template utilisant Typescript, React Navigation et tsyringe",
+        "en" : "This project is a template using Typescript, React Navigation and tsyringe"
     }
 }
