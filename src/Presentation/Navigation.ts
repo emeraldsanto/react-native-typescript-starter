@@ -6,7 +6,7 @@ const stack = createStackNavigator({
     Welcome : Welcome
 }, {
     defaultNavigationOptions : {
-        title : "Starter"
+        headerShown : false
     }
 });
 
