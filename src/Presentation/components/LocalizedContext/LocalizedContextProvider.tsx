@@ -1,27 +1,34 @@
 import React, { Component } from "react";
-import LocalizedContext, { LocalizedContextValue } from "./LocalizedContext";
-import LocalizedContextProviderProps from './LocalizedContextProviderProps';
+import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue.js";
+import translations from '../../translation/translations.json';
+import LocalizedContext from "./LocalizedContext";
 import LocalizedContextProviderState from './LocalizedContextProviderState';
 
-export default class LocalizedContextProvider extends Component<LocalizedContextProviderProps, LocalizedContextProviderState> {
+export default class LocalizedContextProvider extends Component<{}, LocalizedContextProviderState> {
     
+    static SUPPORTED_LANGUAGES = ['fr', 'en'];
+
     state = {
-        language : this.props.initialLanguage
+        language : "fr"
     }
 
     private _translate = (key : string) : string => {
-        const { translations } = this.props;
         const { language } = this.state;
+        const localizations : { 
+            [key : string] : {
+                [key : string] : string
+            }
+        } = translations;
 
         try {
-            return translations[key][language];
+            return localizations[key][language];
         } catch (error) {
             return `[${key}]`;
         }
     }
 
     private _changeLanguage = (language : string) : void => {
-        if (!this.props.supportedLanguages.includes(language)) {
+        if (!LocalizedContextProvider.SUPPORTED_LANGUAGES.includes(language)) {
             throw new Error(`Unsupported language: ${language}`);
         }
 
