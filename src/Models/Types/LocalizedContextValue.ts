@@ -1,6 +1,7 @@
 
 export default interface LocalizedContextValue {
     language : string;
-    translate : (_ : string) => string;
+    supportedLanguages : string[];
     changeLanguage : (_ : string) => void;
+    translate : (_ : string) => string;
 }

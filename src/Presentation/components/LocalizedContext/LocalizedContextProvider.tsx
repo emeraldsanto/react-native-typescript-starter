@@ -38,8 +38,9 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
     private _computeProviderValue = () : LocalizedContextValue => {
         return {
             language : this.state.language,
+            supportedLanguages : LocalizedContextProvider.SUPPORTED_LANGUAGES,
+            changeLanguage : this._changeLanguage,
             translate : this._translate,
-            changeLanguage : this._changeLanguage
         };
     }
 

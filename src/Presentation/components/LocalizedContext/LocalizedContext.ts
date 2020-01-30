@@ -3,8 +3,9 @@ import LocalizedContextValue from '../../../Models/Types/LocalizedContextValue';
 
 const LocalizedContext = createContext<LocalizedContextValue>({
     language : 'en',
+    supportedLanguages : ['en'],
+    changeLanguage : (_ : string) => {},
     translate : (_ : string) => 'PLACEHOLDER_TRANSLATION',
-    changeLanguage : (_ : string) => {}
 });
 
 export default LocalizedContext;

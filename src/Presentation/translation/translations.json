@@ -7,5 +7,10 @@
     "dependencyList" : {
         "fr" : "Ce projet est un template utilisant Typescript, React Navigation et tsyringe",
         "en" : "This project is a template using Typescript, React Navigation and tsyringe"
+    },
+
+    "changeTo" : {
+        "fr" : "Changer à ",
+        "en" : "Change to "
     }
 }

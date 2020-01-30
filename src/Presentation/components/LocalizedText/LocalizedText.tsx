@@ -1,4 +1,4 @@
-import React, { Component, ContextType } from "react";
+import React, { Component, ContextType, Children } from "react";
 import { Text, TextProps } from "react-native";
 import LocalizedContext from '../LocalizedContext/LocalizedContext';
 
@@ -10,7 +10,13 @@ export default class LocalizedText extends Component<TextProps> {
         const { style, children, ...rest } = this.props;
         return (
             <Text style={style} {...rest}>
-                {this.context.translate(children as string)}
+                {Children.map(children, child => {
+                    if (typeof child === 'string') {
+                        return this.context.translate(child);
+                    }
+
+                    return child;
+                })}
             </Text>
         );
     }
