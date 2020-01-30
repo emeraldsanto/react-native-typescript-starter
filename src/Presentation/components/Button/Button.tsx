@@ -26,7 +26,7 @@ export default class Button extends PureComponent<ButtonProps> {
         const Touchable = this._computeType(effect);
 
         return (
-            <Touchable style={[{ borderRadius : 6 }, style]} {...rest}>
+            <Touchable style={[{ borderRadius : 6, padding : 10 }, style]} {...rest}>
                 {children}
             </Touchable>
         );

@@ -92,7 +92,6 @@ const WelcomeStyle = StyleSheet.create({
 
     button : {
         width : '100%',
-        padding : 10,
         marginBottom : 15,
         borderRadius : 6
     }
