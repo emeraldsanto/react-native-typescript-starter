@@ -17,7 +17,6 @@
             "onError" : "#FFFFFF"
         }
     },
-
     {
         "name" : "Material Dark",
         "dark" : true,

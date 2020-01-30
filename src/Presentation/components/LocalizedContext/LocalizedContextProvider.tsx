@@ -9,7 +9,7 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
     static SUPPORTED_LANGUAGES = ['fr', 'en'];
 
     state = {
-        language : "fr"
+        language : "en"
     }
 
     private _translate = (key : string) : string => {
