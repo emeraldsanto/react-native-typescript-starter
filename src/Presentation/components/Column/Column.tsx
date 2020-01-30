@@ -3,7 +3,7 @@ import ColumnProps from "./ColumnProps";
 import { View } from "react-native";
 import React from "react";
 
-export default class Row extends PureComponent<ColumnProps> {
+export default class Column extends PureComponent<ColumnProps> {
 
     render() {
         const { reverse, alignItems, justifyContent, style, children, ...rest } = this.props;
