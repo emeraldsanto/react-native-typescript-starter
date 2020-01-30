@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import ThemedComponent from "../../../Architecture/ThemedComponent";
 import Column from "../../components/Column/Column";
 import Themed from "../../components/Themed/Themed";
