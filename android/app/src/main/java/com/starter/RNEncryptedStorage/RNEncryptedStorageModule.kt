@@ -54,7 +54,14 @@ class RNEncryptedStorageModule(context: ReactApplicationContext) : ReactContextB
     fun remove(key : String, promise : Promise) {
         val editor = this.sharedPreferences.edit();
         editor.remove(key);
-        editor.apply();
-        promise.resolve(true);
+        val saved = editor.commit();
+
+        if (saved) {
+            promise.resolve(key);
+        }
+
+        else {
+            promise.reject(Exception("An error occured while removing $key"));
+        }
     }
 }
