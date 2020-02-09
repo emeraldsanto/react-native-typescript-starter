@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import LocalizedContextProvider from "./components/LocalizedContext/LocalizedContextProvider";
-import ThemeContextProvider from "./components/ThemeContext/ThemeContextProvider";
+import LocalizedContextProvider from "../Architecture/Contexts/LocalizedContext/LocalizedContextProvider";
+import ThemeContextProvider from "../Architecture/Contexts/ThemeContext/ThemeContextProvider";
 import { Navigation } from "./Navigation";
 
 export default class App extends Component {

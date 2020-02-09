@@ -16,4 +16,5 @@ export default interface Theme {
         onSurface : string;
         onError : string;
         [key : string] : string;
+    }
 }

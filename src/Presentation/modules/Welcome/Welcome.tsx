@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ThemedComponent from "../../../Architecture/ThemedComponent";
-import Column from "../../components/Column/Column";
-import Themed from "../../components/Themed/Themed";
-import LocalizedContext from "../../components/LocalizedContext/LocalizedContext";
+import ThemedComponent from "../../../Architecture/Components/ThemedComponent/ThemedComponent";
+import Themed from "../../../Architecture/Components/Themed/Themed";
+import LocalizedContext from "../../../Architecture/Contexts/LocalizedContext/LocalizedContext";
+import { Column } from "../../../Architecture/Components/Flex/Flex";
 
 export default class Welcome extends ThemedComponent {
     

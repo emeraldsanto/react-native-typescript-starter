@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue.js";
-import translations from '../../translation/translations.json';
+import translations from '../../../Presentation/translation/translations.json';
 import LocalizedContext from "./LocalizedContext";
 import LocalizedContextProviderState from './LocalizedContextProviderState';
 
