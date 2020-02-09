@@ -7,9 +7,18 @@ import LocalizedContextProviderState from './LocalizedContextProviderState';
 export default class LocalizedContextProvider extends Component<{}, LocalizedContextProviderState> {
     
     static SUPPORTED_LANGUAGES = ['fr', 'en'];
+    static STORAGE_KEY = "SAVED_LANGUAGE";
 
     state = {
         language : "en"
+    }
+
+    componentDidMount() {
+        this._fetchSavedLanguage();
+    }
+
+    componentWillUnmount() {
+        this._updateSavedLanguage();
     }
 
     private _translate = (key : string) : string => {
@@ -42,6 +51,14 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
             changeLanguage : this._changeLanguage,
             translate : this._translate,
         };
+    }
+
+    private _fetchSavedLanguage = async () => {
+        // TODO: After having implemented EncryptedStorage on the native
+    }
+
+    private _updateSavedLanguage = async () => {
+        // TODO: After having implemented EncryptedStorage on the native
     }
 
     render() {
