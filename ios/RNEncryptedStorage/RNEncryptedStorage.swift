@@ -9,7 +9,7 @@
 import Foundation
 import Security
 
-@objc
+@objc(RNEncryptedStorage)
 class RNEncryptedStorage: NSObject {
   
   @objc
@@ -19,37 +19,37 @@ class RNEncryptedStorage: NSObject {
   
   @objc func store(_ key : String, value : String, resolver resolve : RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) -> Void {
     guard let dataFromValue = value.data(using: .utf8, allowLossyConversion: false) else {
-      return reject("");
+      return reject("Error parsing value for key \(key)", nil, nil);
     }
     
     // Prepares the insert query structure
-    let storeQuery : [String : String] = [
-      kSecClass : kSecClassGenericPassword,
-      kSecAttrAccount : key,
-      kSecValueData : value
+    let storeQuery : [String : Any] = [
+      kSecClass as String : kSecClassGenericPassword,
+      kSecAttrAccount as String : key,
+      kSecValueData as String : dataFromValue
     ];
     
     // Deletes the existing item prior to inserting the new one
-    SecItemDelete(storeQuery);
+    SecItemDelete(storeQuery as CFDictionary);
     
-    let status = SecItemAdd(storeQuery, nil);
+    let status = SecItemAdd(storeQuery as CFDictionary, nil);
     
     if (status == noErr) {
       resolve(value);
     }
     
     else {
-      reject("An error occured while saving \(key)");
+      reject("An error occured while saving \(key)", nil, nil);
     }
   }
   
   @objc
   func retrieve(_ key : String, resolver resolve : RCTPromiseResolveBlock, rejecter reject : RCTPromiseRejectBlock) {
-    let retrieveQuery : [String : String] = [
-      kSecClass : kSecClassGenericPassword,
-      kSecAttrAccount : key,
-      kSecReturnData : kCFBooleanTrue!,
-      kSecMatchLimit : kSecMatchLimitOne
+    let retrieveQuery : [String : Any] = [
+      kSecClass as String : kSecClassGenericPassword,
+      kSecAttrAccount as String : key,
+      kSecReturnData as String : kCFBooleanTrue!,
+      kSecMatchLimit as String : kSecMatchLimitOne
     ];
     
     var dataRef : AnyObject? = nil;
@@ -62,16 +62,16 @@ class RNEncryptedStorage: NSObject {
     }
     
     else {
-      reject("An error occured while retrieving \(key)");
+      reject("An error occured while retrieving \(key)", nil, nil);
     }
   }
   
   @objc
   func remove(_ key : String, resolver resolve : RCTPromiseResolveBlock, rejecter reject : RCTPromiseRejectBlock) {
-    let removeQuery : [String : String] = [
-      kSecClass : kSecClassGenericPassword,
-      kSecAttrAccount : key,
-      kSecReturnData : kCFBooleanTrue!
+    let removeQuery : [String : Any] = [
+      kSecClass as String : kSecClassGenericPassword,
+      kSecAttrAccount as String : key,
+      kSecReturnData as String : kCFBooleanTrue!
     ];
     
     let status = SecItemDelete(removeQuery as CFDictionary);
@@ -81,7 +81,7 @@ class RNEncryptedStorage: NSObject {
     }
     
     else {
-      reject("An error occured while removing \(key)");
+      reject("An error occured while removing \(key)", nil, nil);
     }
   }
 }

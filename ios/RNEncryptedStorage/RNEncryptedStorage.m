@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "React/RCTBridgeModule.h"
 
-@interface RCT_EXTERN_MODULE(RNEncrypteStorage, NSObject)
+@interface RCT_EXTERN_MODULE(RNEncryptedStorage, NSObject)
 
 RCT_EXTERN_METHOD(
   store: (NSString *)key
