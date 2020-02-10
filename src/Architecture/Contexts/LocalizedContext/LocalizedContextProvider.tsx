@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue.js";
+import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue";
 import translations from '../../../Presentation/translation/translations.json';
 import LocalizedContext from "./LocalizedContext";
 import LocalizedContextProviderState from './LocalizedContextProviderState';
@@ -13,16 +13,9 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
         language : "en"
     }
 
-    componentDidMount() {
-        this._fetchSavedLanguage();
-    }
-
-    componentWillUnmount() {
-        this._updateSavedLanguage();
-    }
-
     private _translate = (key : string) : string => {
         const { language } = this.state;
+        
         const localizations : { 
             [key : string] : {
                 [key : string] : string
@@ -49,16 +42,8 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
             language : this.state.language,
             supportedLanguages : LocalizedContextProvider.SUPPORTED_LANGUAGES,
             changeLanguage : this._changeLanguage,
-            translate : this._translate,
+            translate : this._translate
         };
-    }
-
-    private _fetchSavedLanguage = async () => {
-        // TODO: After having implemented EncryptedStorage on the native
-    }
-
-    private _updateSavedLanguage = async () => {
-        // TODO: After having implemented EncryptedStorage on the native
     }
 
     render() {

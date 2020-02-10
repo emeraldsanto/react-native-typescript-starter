@@ -26,7 +26,7 @@ class RNEncryptedStorageModule(context: ReactApplicationContext) : ReactContextB
     fun store(key : String, value : String, promise : Promise) {
         val editor = this.sharedPreferences.edit();
         editor.putString(key, value);
-        val saved = editor.commit()
+        val saved = editor.commit();
 
         if (saved) {
             promise.resolve(value);
