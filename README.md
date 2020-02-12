@@ -1,4 +1,4 @@
-# react-native-starter
+# React Native TypeScript Starter
  A React Native boilerplate project using Typescript and React Navigation.
  
 ## Translation
