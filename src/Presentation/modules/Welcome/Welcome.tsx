@@ -1,61 +1,54 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import { Column } from "../../../Architecture/Components/Flex/Flex";
 import { Themed } from "../../../Architecture/Components/Themed/Themed";
-import { ThemedComponent } from "../../../Architecture/Components/ThemedComponent/ThemedComponent";
-import { LocalizationContext } from "../../../Architecture/Contexts/LocalizedContext/LocalizationContext";
+import { useLocalization, useTheme } from "../../../Architecture/hooks";
 
-export class Welcome extends ThemedComponent {
-    
-    render() {
-        const { theme, supportedThemes, changeTheme } = this.context;
+export const Welcome : FunctionComponent = () => {
+    const { theme, supportedThemes, changeTheme } = useTheme();
+    const { supportedLanguages, changeLanguage } = useLocalization();
 
-        return (
-            <LocalizationContext.Consumer>
-                {({ supportedLanguages, changeLanguage }) => (
-                    <View style={[WelcomeStyle.container, { backgroundColor : theme.colors.background }]}>
-                        <Column alignItems='center' justifyContent='center' style={[WelcomeStyle.column, { borderColor : theme.colors.onSurface }]}>
-                            <Themed.LocalizedText style={WelcomeStyle.title}>
-                                welcomeToStarter
-                            </Themed.LocalizedText>
-        
-                            <Themed.LocalizedText style={WelcomeStyle.sub}>
-                                dependencyList
-                            </Themed.LocalizedText>
-                        </Column>
-        
-                        <View style={WelcomeStyle.buttons}>
-                            {supportedThemes.map(t => (
-                                <Themed.Button key={t.name} context='primary' effect='opacity' style={WelcomeStyle.button} onPress={() => changeTheme(t)}>
-                                    <Themed.LocalizedText context='onPrimary' style={{ textAlign : 'center' }}>
-                                        changeTo 
-                                        
-                                        <Themed.Text context='onPrimary'>
-                                            {t.name}
-                                        </Themed.Text>
-                                    </Themed.LocalizedText>
-                                </Themed.Button>
-                            ))}
-                        </View>
+    return (
+        <View style={[WelcomeStyle.container, { backgroundColor : theme.colors.background }]}>
+            <Column alignItems='center' justifyContent='center' style={[WelcomeStyle.column, { borderColor : theme.colors.onSurface }]}>
+                <Themed.LocalizedText style={WelcomeStyle.title}>
+                    welcomeToStarter
+                </Themed.LocalizedText>
 
-                        <View style={WelcomeStyle.buttons}>
-                            {supportedLanguages.map(t => (
-                                <Themed.Button key={t} context='secondaryVariant' effect='opacity' style={WelcomeStyle.button} onPress={() => changeLanguage(t)}>
-                                    <Themed.LocalizedText context='onPrimary' style={{ textAlign : 'center' }}>
-                                        changeTo 
-                                        
-                                        <Themed.Text context='onPrimary'>
-                                            {t.toUpperCase()}
-                                        </Themed.Text>
-                                    </Themed.LocalizedText>
-                                </Themed.Button>
-                            ))}
-                        </View>
-                    </View>
-                )}
-            </LocalizationContext.Consumer>
-        );
-    }
+                <Themed.LocalizedText style={WelcomeStyle.sub}>
+                    dependencyList
+                </Themed.LocalizedText>
+            </Column>
+
+            <View style={WelcomeStyle.buttons}>
+                {supportedThemes.map(t => (
+                    <Themed.Button key={t.name} context='primary' effect='opacity' style={WelcomeStyle.button} onPress={() => changeTheme(t)}>
+                        <Themed.LocalizedText context='onPrimary' style={{ textAlign : 'center' }}>
+                            changeTo 
+
+                            <Themed.Text context='onPrimary'>
+                                {t.name}
+                            </Themed.Text>
+                        </Themed.LocalizedText>
+                    </Themed.Button>
+                ))}
+            </View>
+
+            <View style={WelcomeStyle.buttons}>
+                {supportedLanguages.map(t => (
+                    <Themed.Button key={t} context='secondaryVariant' effect='opacity' style={WelcomeStyle.button} onPress={() => changeLanguage(t)}>
+                        <Themed.LocalizedText context='onPrimary' style={{ textAlign : 'center' }}>
+                            changeTo 
+
+                            <Themed.Text context='onPrimary'>
+                                {t.toUpperCase()}
+                            </Themed.Text>
+                        </Themed.LocalizedText>
+                    </Themed.Button>
+                ))}
+            </View>
+        </View>
+    );
 }
 
 const WelcomeStyle = StyleSheet.create({

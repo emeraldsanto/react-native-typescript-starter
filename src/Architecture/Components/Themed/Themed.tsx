@@ -1,9 +1,9 @@
-import { ThemedComponent } from "../ThemedComponent/ThemedComponent";
-import Native, { TextProps } from "react-native";
-import { default as Localized } from '../LocalizedText/LocalizedText';
 import React from "react";
-import { default as Btn } from '../../../Presentation/components/Button/Button';
+import Native, { TextProps } from "react-native";
+import { Button as Btn } from '../../../Presentation/components/Button/Button';
 import { ButtonProps } from "../../../Presentation/components/Button/ButtonProps";
+import { LocalizedText as Localized } from '../LocalizedText/LocalizedText';
+import { ThemedComponent } from "../ThemedComponent/ThemedComponent";
 
 export namespace Themed {
 

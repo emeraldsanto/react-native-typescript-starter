@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from "react";
 import { LocalizationContext } from "./LocalizationContext";
-import { LocalizedContextProviderProps } from "./LocalizedContextProviderProps";
+import { LocalizationContextProviderProps } from "./LocalizationContextProviderProps";
 
-export const LocalizedContextProvider : FunctionComponent<LocalizedContextProviderProps> = props => {
+export const LocalizationContextProvider : FunctionComponent<LocalizationContextProviderProps> = props => {
     const { initialLanguage, supportedLanguages, translations, children } = props;
     const [language, setLanguage] = useState(initialLanguage);
 

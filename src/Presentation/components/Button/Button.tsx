@@ -1,10 +1,11 @@
+import React, { FunctionComponent } from "react";
+import { TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import { ButtonProps } from "./ButtonProps";
-import React, { PureComponent } from "react";
-import { TouchableWithoutFeedback, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from "react-native";
 
-export class Button extends PureComponent<ButtonProps> {
+export const Button : FunctionComponent<ButtonProps> = props => {
+    const { effect = 'none', style, children, ...rest } = props;
 
-    private _computeType = (touchableEffect : string) => {
+    const computeType = (touchableEffect : string) => {
         switch (touchableEffect) {
             case 'opacity':
                 return TouchableOpacity;
@@ -21,14 +22,10 @@ export class Button extends PureComponent<ButtonProps> {
         }
     }
 
-    render() {
-        const { effect = 'none', style, children, ...rest } = this.props;
-        const Touchable = this._computeType(effect);
-
-        return (
-            <Touchable style={[{ borderRadius : 6, padding : 10 }, style]} {...rest}>
-                {children}
-            </Touchable>
-        );
-    }
+    const Touchable = computeType(effect);
+    return (
+        <Touchable style={[{ borderRadius : 6, padding : 10 }, style]} {...rest}>
+            {children}
+        </Touchable>
+    );
 }

@@ -1,7 +1,6 @@
-import { PureComponent } from "react";
-import FlexProps from "./FlexProps";
-import React from "react";
+import React, { PureComponent } from "react";
 import { View } from "react-native";
+import { FlexProps } from "./FlexProps";
 
 export class Row extends PureComponent<FlexProps> {
 
