@@ -2,7 +2,8 @@ import React, { FunctionComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import { Column } from "../../../Architecture/Components/Flex/Flex";
 import { Themed } from "../../../Architecture/Components/Themed/Themed";
-import { useLocalization, useTheme } from "../../../Architecture/hooks";
+import { useLocalization } from "../../../Architecture/Contexts/LocalizedContext/LocalizationContext";
+import { useTheme } from "../../../Architecture/Contexts/ThemeContext/ThemeContext";
 
 export const Welcome : FunctionComponent = () => {
     const { theme, supportedThemes, changeTheme } = useTheme();

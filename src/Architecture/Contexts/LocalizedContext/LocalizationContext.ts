@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface LocalizationContextValue {
     language : string;
@@ -13,4 +13,8 @@ export const LocalizationContext = createContext<LocalizationContextValue>({
     changeLanguage : (_ : string) => {},
     translate : (_ : string) => 'PLACEHOLDER_TRANSLATION',
 });
+
+export function useLocalization() {
+    return useContext(LocalizationContext);
+}
 

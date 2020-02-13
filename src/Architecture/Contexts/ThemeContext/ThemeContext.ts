@@ -1,8 +1,8 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 export interface Theme {
-    name : string;
-    dark : boolean;
+    name : string, 
+    dark : boolean, 
     colors : {
         primary : string;
         primaryVariant : string;
@@ -48,3 +48,7 @@ export const ThemeContext = createContext<ThemeContextValue>({
     supportedThemes : [],
     changeTheme : (_ : Theme) => {}
 });
+
+export function useTheme() {
+    return useContext(ThemeContext);
+}

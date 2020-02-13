@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import Native, { TextProps } from "react-native";
 import { Button as Btn } from '../../../Presentation/components/Button/Button';
 import { ButtonProps } from "../../../Presentation/components/Button/ButtonProps";
-import { useTheme } from "../../hooks";
+import { useTheme } from "../../Contexts/ThemeContext/ThemeContext";
 import { LocalizedText as Localized } from '../LocalizedText/LocalizedText';
 import { ThemedProps } from './ThemedProps';
 

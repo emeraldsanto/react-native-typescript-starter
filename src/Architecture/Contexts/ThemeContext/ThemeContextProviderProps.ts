@@ -1,4 +1,4 @@
-import { Theme } from "../../../Models/Types/Theme";
+import { Theme } from "./ThemeContext";
 
 export interface ThemeContextProviderProps {
 

@@ -1,31 +1,25 @@
-import React, { PureComponent } from "react";
+import React, { FunctionComponent } from "react";
 import { View } from "react-native";
 import { FlexProps } from "./FlexProps";
 
-export class Row extends PureComponent<FlexProps> {
+export const Row : FunctionComponent<FlexProps> = props => {
+    const { reverse, alignItems, justifyContent, style, children, ...rest } = props;
+    const direction = reverse ? 'row-reverse' : 'row';
 
-    render() {
-        const { reverse, alignItems, justifyContent, style, children, ...rest } = this.props;
-        const direction = reverse ? 'row-reverse' : 'row'
-
-        return (
-            <View style={[{ flexDirection : direction, alignItems, justifyContent }, style]} {...rest}>
-                {children}
-            </View> 
-        );
-    }
+    return (
+        <View style={[style, { flexDirection : direction, alignItems, justifyContent }]} {...rest}>
+            {children}
+        </View>
+    );
 }
 
-export class Column extends PureComponent<FlexProps> {
-    
-    render() {
-        const { reverse, alignItems, justifyContent, style, children, ...rest } = this.props;
-        const direction = reverse ? 'column-reverse' : 'column'
+export const Column : FunctionComponent<FlexProps> = props => {
+    const { reverse, alignItems, justifyContent, style, children, ...rest } = props;
+    const direction = reverse ? 'column-reverse' : 'column';
 
-        return (
-            <View style={[{ flexDirection : direction, alignItems, justifyContent }, style]} {...rest}>
-                {children}
-            </View> 
-        );
-    }
+    return (
+        <View style={[style, { flexDirection : direction, alignItems, justifyContent }]} {...rest}>
+            {children}
+        </View>
+    );
 }
