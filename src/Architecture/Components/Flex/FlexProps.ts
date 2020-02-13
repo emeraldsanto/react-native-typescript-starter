@@ -1,6 +1,6 @@
 import { FlexAlignType, ViewProps } from "react-native";
 
-export default interface FlexProps extends ViewProps {
+export interface FlexProps extends ViewProps {
 
     reverse? : boolean;
     alignItems? : FlexAlignType;

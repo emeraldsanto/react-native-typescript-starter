@@ -1,5 +1,5 @@
 
-export default interface LocalizedContextProviderProps {
+export interface LocalizedContextProviderProps {
 
     initialLanguage : string;
     supportedLanguages : string[];

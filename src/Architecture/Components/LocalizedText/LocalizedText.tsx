@@ -1,10 +1,10 @@
-import React, { Component, ContextType, Children } from "react";
+import React, { Children, Component, ContextType } from "react";
 import { Text, TextProps } from "react-native";
-import LocalizedContext from '../../../Architecture/Contexts/LocalizedContext/LocalizedContext';
+import { LocalizationContext } from '../../Contexts/LocalizedContext/LocalizationContext';
 
-export default class LocalizedText extends Component<TextProps> {
-    static contextType = LocalizedContext;
-    context! : ContextType<typeof LocalizedContext>;
+export class LocalizedText extends Component<TextProps> {
+    static contextType = LocalizationContext;
+    context! : ContextType<typeof LocalizationContext>;
 
     render() {
         const { style, children, ...rest } = this.props;

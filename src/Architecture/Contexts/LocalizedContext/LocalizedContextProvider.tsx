@@ -1,54 +1,30 @@
-import React, { Component } from "react";
-import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue";
-import translations from '../../../Presentation/translation/translations.json';
-import LocalizedContext from "./LocalizedContext";
-import LocalizedContextProviderState from './LocalizedContextProviderState';
-import LocalizedContextProviderProps from "./LocalizedContextProviderProps";
+import React, { FunctionComponent, useState } from "react";
+import { LocalizationContext } from "./LocalizationContext";
+import { LocalizedContextProviderProps } from "./LocalizedContextProviderProps";
 
-export default class LocalizedContextProvider extends Component<LocalizedContextProviderProps, LocalizedContextProviderState> {
+export const LocalizedContextProvider : FunctionComponent<LocalizedContextProviderProps> = props => {
+    const { initialLanguage, supportedLanguages, translations, children } = props;
+    const [language, setLanguage] = useState(initialLanguage);
 
-    state = {
-        language : this.props.initialLanguage
+    const changeLanguage = (newLanguage : string) => {
+        if (!supportedLanguages.includes(newLanguage)) {
+            throw new Error(`Unsupported language: ${language}`);
+        }
+
+        setLanguage(newLanguage);
     }
 
-    private _translate = (key : string) : string => {
-        const { language } = this.state;
-        
-        const localizations : { 
-            [key : string] : {
-                [key : string] : string
-            }
-        } = translations;
-
+    const translate = (key : string) => {   
         try {
-            return localizations[key][language];
+            return translations[key][language];
         } catch (error) {
             return `[${key}]`;
         }
     }
 
-    private _changeLanguage = (language : string) : void => {
-        if (!this.props.supportedLanguages.includes(language)) {
-            throw new Error(`Unsupported language: ${language}`);
-        }
-
-        this.setState({ language });
-    }
-
-    private _computeProviderValue = () : LocalizedContextValue => {
-        return {
-            language : this.state.language,
-            translate : this._translate,
-            changeLanguage : this._changeLanguage,
-            supportedLanguages : this.props.supportedLanguages,
-        };
-    }
-
-    render() {
-        return (
-            <LocalizedContext.Provider value={this._computeProviderValue()}>
-                {this.props.children}
-            </LocalizedContext.Provider>
-        );
-    }
+    return (
+        <LocalizationContext.Provider value={{ language, changeLanguage, translate, supportedLanguages }}>
+            {children}
+        </LocalizationContext.Provider>
+    );
 }

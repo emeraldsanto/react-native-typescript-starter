@@ -1,8 +1,8 @@
-import ButtonProps from "./ButtonProps";
+import { ButtonProps } from "./ButtonProps";
 import React, { PureComponent } from "react";
 import { TouchableWithoutFeedback, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from "react-native";
 
-export default class Button extends PureComponent<ButtonProps> {
+export class Button extends PureComponent<ButtonProps> {
 
     private _computeType = (touchableEffect : string) => {
         switch (touchableEffect) {

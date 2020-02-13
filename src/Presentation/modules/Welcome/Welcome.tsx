@@ -1,18 +1,18 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import ThemedComponent from "../../../Architecture/Components/ThemedComponent/ThemedComponent";
-import Themed from "../../../Architecture/Components/Themed/Themed";
-import LocalizedContext from "../../../Architecture/Contexts/LocalizedContext/LocalizedContext";
+import { StyleSheet, View } from "react-native";
 import { Column } from "../../../Architecture/Components/Flex/Flex";
+import { Themed } from "../../../Architecture/Components/Themed/Themed";
+import { ThemedComponent } from "../../../Architecture/Components/ThemedComponent/ThemedComponent";
+import { LocalizationContext } from "../../../Architecture/Contexts/LocalizedContext/LocalizationContext";
 
-export default class Welcome extends ThemedComponent {
+export class Welcome extends ThemedComponent {
     
     render() {
         const { theme, supportedThemes, changeTheme } = this.context;
 
         return (
-            <LocalizedContext.Consumer>
-                {({ language, supportedLanguages, changeLanguage, translate }) => (
+            <LocalizationContext.Consumer>
+                {({ supportedLanguages, changeLanguage }) => (
                     <View style={[WelcomeStyle.container, { backgroundColor : theme.colors.background }]}>
                         <Column alignItems='center' justifyContent='center' style={[WelcomeStyle.column, { borderColor : theme.colors.onSurface }]}>
                             <Themed.LocalizedText style={WelcomeStyle.title}>
@@ -26,7 +26,7 @@ export default class Welcome extends ThemedComponent {
         
                         <View style={WelcomeStyle.buttons}>
                             {supportedThemes.map(t => (
-                                <Themed.Button key={t.name} context='primary' effect='opacity' style={WelcomeStyle.button} onPress={() => changeTheme(t.name)}>
+                                <Themed.Button key={t.name} context='primary' effect='opacity' style={WelcomeStyle.button} onPress={() => changeTheme(t)}>
                                     <Themed.LocalizedText context='onPrimary' style={{ textAlign : 'center' }}>
                                         changeTo 
                                         
@@ -53,7 +53,7 @@ export default class Welcome extends ThemedComponent {
                         </View>
                     </View>
                 )}
-            </LocalizedContext.Consumer>
+            </LocalizationContext.Consumer>
         );
     }
 }

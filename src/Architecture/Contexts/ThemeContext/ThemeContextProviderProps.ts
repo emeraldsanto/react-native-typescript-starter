@@ -1,6 +1,6 @@
-import Theme from "../../../Models/Types/Theme";
+import { Theme } from "../../../Models/Types/Theme";
 
-export default interface ThemeContextProviderProps {
+export interface ThemeContextProviderProps {
 
     initialTheme : Theme;
     supportedThemes : Theme[];

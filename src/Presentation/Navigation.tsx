@@ -5,7 +5,7 @@ import Welcome from './modules/Welcome/Welcome';
 
 const Stack = createStackNavigator();
 
-export default class Navigation extends PureComponent {
+export class Navigation extends PureComponent {
 
     render() {
         return (

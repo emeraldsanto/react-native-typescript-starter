@@ -1,11 +1,11 @@
-import ThemedComponent from "../ThemedComponent/ThemedComponent";
+import { ThemedComponent } from "../ThemedComponent/ThemedComponent";
 import Native, { TextProps } from "react-native";
 import { default as Localized } from '../LocalizedText/LocalizedText';
 import React from "react";
 import { default as Btn } from '../../../Presentation/components/Button/Button';
-import ButtonProps from "../../../Presentation/components/Button/ButtonProps";
+import { ButtonProps } from "../../../Presentation/components/Button/ButtonProps";
 
-namespace Themed {
+export namespace Themed {
 
     export class Text extends ThemedComponent<TextProps> {
 
@@ -49,5 +49,3 @@ namespace Themed {
         }
     }
 }
-
-export default Themed;

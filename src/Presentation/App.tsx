@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import LocalizedContextProvider from "../Architecture/Contexts/LocalizedContext/LocalizedContextProvider";
-import ThemeContextProvider from "../Architecture/Contexts/ThemeContext/ThemeContextProvider";
-import Navigation from "./Navigation";
+import { LocalizedContextProvider } from "../Architecture/Contexts/LocalizedContext/LocalizedContextProvider";
+import { ThemeContextProvider } from "../Architecture/Contexts/ThemeContext/ThemeContextProvider";
+import { Navigation } from "./Navigation";
 import themes from '../Config/themes.json';
 import translations from "./translation/translations.json";
 
-export default class App extends Component {
+export class App extends Component {
 
     render() {
         return (
