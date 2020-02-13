@@ -1,51 +1,43 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Native, { TextProps } from "react-native";
 import { Button as Btn } from '../../../Presentation/components/Button/Button';
 import { ButtonProps } from "../../../Presentation/components/Button/ButtonProps";
+import { useTheme } from "../../hooks";
 import { LocalizedText as Localized } from '../LocalizedText/LocalizedText';
-import { ThemedComponent } from "../ThemedComponent/ThemedComponent";
+import { ThemedProps } from './ThemedProps';
 
 export namespace Themed {
 
-    export class Text extends ThemedComponent<TextProps> {
+    export const Text : FunctionComponent<ThemedProps & TextProps> = props => {
+        const { context = 'onSurface', style, children, ...rest } = props;
+        const { theme } = useTheme();
 
-        render() {
-            const { context = 'onSurface', style, children, ...rest } = this.props;
-            const { colors } = this.context.theme;
-
-            return (
-                <Native.Text style={[{ color : colors[context] }, style]} {...rest}>
-                    {children}
-                </Native.Text>
-            );
-        }
+        return (
+            <Native.Text style={[style, { color : theme.colors[context] }]} {...rest}>
+                {children}
+            </Native.Text>
+        );
     }
 
-    export class LocalizedText extends ThemedComponent<TextProps> {
+    export const LocalizedText : FunctionComponent<ThemedProps & TextProps> = props => {
+        const { context = 'onSurface', style, children, ...rest } = props;
+        const { theme } = useTheme();
 
-        render() {
-            const { context = 'onSurface', style, children, ...rest } = this.props;
-            const { colors } = this.context.theme;
-
-            return (
-                <Localized style={[{ color : colors[context] }, style]} {...rest}>
-                    {children}
-                </Localized>
-            );
-        }
+        return (
+            <Localized style={[style, { color : theme.colors[context] }]} {...rest}>
+                {children}
+            </Localized>
+        );
     }
 
-    export class Button extends ThemedComponent<ButtonProps> {
+    export const Button : FunctionComponent<ThemedProps & ButtonProps> = props => {
+        const { context = 'primary', style, children, ...rest } = props;
+        const { theme } = useTheme();
 
-        render() {
-            const { context = 'primary', style, children, ...rest } = this.props;
-            const { colors } = this.context.theme;
-
-            return (
-                <Btn style={[{ backgroundColor : colors[context] }, style]} {...rest}>
-                    {children}
-                </Btn>
-            );
-        }
+        return (
+            <Btn style={[style, { backgroundColor : theme.colors[context] }]} {...rest}>
+                {children}
+            </Btn>
+        );
     }
 }

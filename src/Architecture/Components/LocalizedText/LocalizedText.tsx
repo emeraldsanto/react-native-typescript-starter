@@ -1,23 +1,20 @@
-import React, { Children, Component, ContextType } from "react";
+import React, { Children, FunctionComponent } from "react";
 import { Text, TextProps } from "react-native";
-import { LocalizationContext } from '../../Contexts/LocalizedContext/LocalizationContext';
+import { useLocalization } from "../../hooks";
 
-export class LocalizedText extends Component<TextProps> {
-    static contextType = LocalizationContext;
-    context! : ContextType<typeof LocalizationContext>;
+export const LocalizedText : FunctionComponent<TextProps> = props => {
+    const { style, children, ...rest } = props;
+    const { translate } = useLocalization();
 
-    render() {
-        const { style, children, ...rest } = this.props;
-        return (
-            <Text style={style} {...rest}>
-                {Children.map(children, child => {
-                    if (typeof child === 'string') {
-                        return this.context.translate(child);
-                    }
+    return (
+        <Text style={style} {...rest}>
+            {Children.map(children, child => {
+                if (typeof child === 'string') {
+                    return translate(child);
+                }
 
-                    return child;
-                })}
-            </Text>
-        );
-    }
+                return child;
+            })}
+        </Text>
+    );
 }
