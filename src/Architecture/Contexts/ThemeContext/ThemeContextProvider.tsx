@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import Themes from '../../../Config/themes.json';
 import ThemeContextValue from "../../../Models/Types/ThemeContextValue";
 import ThemeContext from "./ThemeContext";
 import ThemeContextProviderState from "./ThemeContextProviderState";
+import ThemeContextProviderProps from "./ThemeContextProviderProps.js";
 
-export default class ThemeContextProvider extends Component<{}, ThemeContextProviderState> {
+export default class ThemeContextProvider extends Component<ThemeContextProviderProps, ThemeContextProviderState> {
     
     state = {
-        theme : Themes[0]
+        theme : this.props.initialTheme
     }
 
-    private _changeTheme = (themeName : string) => {
-        const theme = Themes.find(t => t.name === themeName);
+    private _changeTheme = (themeName : string) : void => {
+        const theme = this.props.supportedThemes.find(t => t.name === themeName);
 
         if (!theme) {
             console.warn(`Unable to find theme with name: ${themeName}`);
@@ -24,8 +24,8 @@ export default class ThemeContextProvider extends Component<{}, ThemeContextProv
     private _computeProviderValue = () : ThemeContextValue => {
         return {
             theme : this.state.theme,
-            supportedThemes : Themes,
-            changeTheme : this._changeTheme
+            changeTheme : this._changeTheme,
+            supportedThemes : this.props.supportedThemes
         }
     }
 

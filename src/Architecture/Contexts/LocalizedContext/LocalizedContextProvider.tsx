@@ -3,14 +3,12 @@ import LocalizedContextValue from "../../../Models/Types/LocalizedContextValue";
 import translations from '../../../Presentation/translation/translations.json';
 import LocalizedContext from "./LocalizedContext";
 import LocalizedContextProviderState from './LocalizedContextProviderState';
+import LocalizedContextProviderProps from "./LocalizedContextProviderProps";
 
-export default class LocalizedContextProvider extends Component<{}, LocalizedContextProviderState> {
-    
-    static SUPPORTED_LANGUAGES = ['fr', 'en'];
-    static STORAGE_KEY = "SAVED_LANGUAGE";
+export default class LocalizedContextProvider extends Component<LocalizedContextProviderProps, LocalizedContextProviderState> {
 
     state = {
-        language : "en"
+        language : this.props.initialLanguage
     }
 
     private _translate = (key : string) : string => {
@@ -30,7 +28,7 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
     }
 
     private _changeLanguage = (language : string) : void => {
-        if (!LocalizedContextProvider.SUPPORTED_LANGUAGES.includes(language)) {
+        if (!this.props.supportedLanguages.includes(language)) {
             throw new Error(`Unsupported language: ${language}`);
         }
 
@@ -40,9 +38,9 @@ export default class LocalizedContextProvider extends Component<{}, LocalizedCon
     private _computeProviderValue = () : LocalizedContextValue => {
         return {
             language : this.state.language,
-            supportedLanguages : LocalizedContextProvider.SUPPORTED_LANGUAGES,
+            translate : this._translate,
             changeLanguage : this._changeLanguage,
-            translate : this._translate
+            supportedLanguages : this.props.supportedLanguages,
         };
     }
 
