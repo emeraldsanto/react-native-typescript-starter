@@ -12,7 +12,7 @@ export const App : FunctionComponent = () => {
     return (
         <ThemeContextProvider initialTheme={initialTheme} supportedThemes={themes}>
             <LocalizationContextProvider initialLanguage='fr' supportedLanguages={['fr', 'en']} translations={translations}>
-                <Navigation theme={initialTheme} />
+                <Navigation />
             </LocalizationContextProvider>
         </ThemeContextProvider>
     );
