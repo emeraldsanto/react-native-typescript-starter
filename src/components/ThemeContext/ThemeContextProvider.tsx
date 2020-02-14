@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { Theme, ThemeContext } from "./ThemeContext";
-import { ThemeContextProviderProps } from "./ThemeContextProviderProps.js";
+import { ThemeContextProviderProps } from "./ThemeContextProviderProps";
 
 export const ThemeContextProvider : FunctionComponent<ThemeContextProviderProps> = props => {
     const { initialTheme, supportedThemes, children } = props;

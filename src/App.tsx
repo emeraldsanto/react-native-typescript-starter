@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
-import { LocalizationContextProvider } from "../Architecture/Contexts/LocalizedContext/LocalizationContextProvider";
-import { Theme } from "../Architecture/Contexts/ThemeContext/ThemeContext";
-import { ThemeContextProvider } from "../Architecture/Contexts/ThemeContext/ThemeContextProvider";
-import themes from '../Config/themes.json';
-import { Navigation } from "./Navigation";
-import translations from "./translation/translations.json";
+import { LocalizationContextProvider } from "./components/LocalizedContext/LocalizationContextProvider";
+import { Theme } from "./components/ThemeContext/ThemeContext";
+import { ThemeContextProvider } from "./components/ThemeContext/ThemeContextProvider";
+import themes from './config/themes.json';
+import translations from "./localization/translations.json";
+import { Navigation } from "./navigation/Navigation";
 
 export const App : FunctionComponent = () => {
     const initialTheme : Theme = themes[0];

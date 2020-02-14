@@ -1,12 +1,23 @@
 import React, { FunctionComponent } from "react";
-import Native, { TextProps } from "react-native";
-import { Button as Btn } from '../../../Presentation/components/Button/Button';
-import { ButtonProps } from "../../../Presentation/components/Button/ButtonProps";
-import { useTheme } from "../../Contexts/ThemeContext/ThemeContext";
+import Native, { TextProps, ViewProps } from "react-native";
+import { Button as Btn } from '../Button/Button';
+import { ButtonProps } from "../Button/ButtonProps";
 import { LocalizedText as Localized } from '../LocalizedText/LocalizedText';
+import { useTheme } from "../ThemeContext/ThemeContext";
 import { ThemedProps } from './ThemedProps';
 
 export namespace Themed {
+
+    export const View : FunctionComponent<ThemedProps & ViewProps> = props => {
+        const { context = 'surface', style, children, ...rest } = props;
+        const { theme } = useTheme();
+
+        return (
+            <Native.View style={[style, { backgroundColor : theme.colors[context] }]} {...rest}>
+                {children}
+            </Native.View>
+        );
+    }
 
     export const Text : FunctionComponent<ThemedProps & TextProps> = props => {
         const { context = 'onSurface', style, children, ...rest } = props;
