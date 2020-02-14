@@ -12,5 +12,30 @@
     "changeTo" : {
         "fr" : "Changer à ",
         "en" : "Change to "
+    },
+
+    "showHelp" : {
+        "fr" : "Aide",
+        "en" : "Help"
+    },
+
+    "showCredits" : {
+        "fr" : "Crédits",
+        "en" : "Credits"
+    },
+
+    "starterHelp" : {
+        "fr" : "Premières étapes",
+        "en" : "First steps"
+    },
+
+    "editThemes" : {
+        "fr" : "> Ajoute des thèmes dans @config/themes.json",
+        "en" : "> Add themes in @config/themes.json"
+    },
+
+    "editLanguages" : {
+        "fr" : "> Ajoute des langues dans @localization/translations.json",
+        "en" : "> Add languages in @localization/translations.json"
     }
 }

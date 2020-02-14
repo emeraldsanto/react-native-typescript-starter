@@ -5,15 +5,16 @@ export const modalStyleInterpolator : StackCardStyleInterpolator = (props : Stac
     
     return {
         cardStyle : {
-            opacity : current.progress,
-            transform :[
-                { 
-                    translateY : current.progress.interpolate({
-                        inputRange : [0, 1],
-                        outputRange : [layouts.screen.height, 0]
-                    }) 
-                }
-            ]
+            opacity : current.progress.interpolate({
+                inputRange : [0, 1],
+                outputRange : [0.75, 1]
+            }),
+            transform :[{ 
+                translateY : current.progress.interpolate({
+                    inputRange : [0, 1],
+                    outputRange : [layouts.screen.height, 0]
+                }) 
+            }]
         },
 
         overlayStyle : {

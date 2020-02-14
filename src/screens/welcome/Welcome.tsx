@@ -12,7 +12,25 @@ export const WelcomeScreen : FunctionComponent<NavigationScreenProps<'Welcome'>>
     const { supportedLanguages, changeLanguage } = useLocalization();
 
     const showHelp = () => {
-        navigation.navigate('Modal');
+        navigation.navigate('Modal', {
+            builder : () => (
+                <Column alignItems='center' justifyContent='center'>
+                    <Themed.LocalizedText style={style.modalTitle}>
+                        starterHelp
+                    </Themed.LocalizedText>
+
+                    <Column>
+                        <Themed.LocalizedText style={[style.modalText, { marginBottom : 15 }]}>
+                            editThemes
+                        </Themed.LocalizedText>
+
+                        <Themed.LocalizedText style={style.modalText}>
+                            editLanguages
+                        </Themed.LocalizedText>
+                    </Column>
+                </Column>   
+            )
+        });
     }
 
     return (
@@ -117,5 +135,15 @@ const style = StyleSheet.create({
 
     center : {
         textAlign : 'center'
+    },
+
+    modalTitle : {
+        fontSize : 18,
+        fontWeight : '700',
+        marginBottom : 15
+    },
+
+    modalText : {
+        fontSize : 14
     }
 });
