@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import Native, { TextProps, ViewProps } from "react-native";
 import { Button as Btn } from '../Button/Button';
 import { ButtonProps } from "../Button/ButtonProps";
@@ -8,7 +8,7 @@ import { ThemedProps } from './ThemedProps';
 
 export namespace Themed {
 
-    export const View : FunctionComponent<ThemedProps & ViewProps> = props => {
+    export const View : FC<ThemedProps & ViewProps> = props => {
         const { context = 'surface', style, children, ...rest } = props;
         const { theme } = useTheme();
 
@@ -19,7 +19,7 @@ export namespace Themed {
         );
     }
 
-    export const Text : FunctionComponent<ThemedProps & TextProps> = props => {
+    export const Text : FC<ThemedProps & TextProps> = props => {
         const { context = 'onSurface', style, children, ...rest } = props;
         const { theme } = useTheme();
 
@@ -30,7 +30,7 @@ export namespace Themed {
         );
     }
 
-    export const LocalizedText : FunctionComponent<ThemedProps & TextProps> = props => {
+    export const LocalizedText : FC<ThemedProps & TextProps> = props => {
         const { context = 'onSurface', style, children, ...rest } = props;
         const { theme } = useTheme();
 
@@ -41,7 +41,7 @@ export namespace Themed {
         );
     }
 
-    export const Button : FunctionComponent<ThemedProps & ButtonProps> = props => {
+    export const Button : FC<ThemedProps & ButtonProps> = props => {
         const { context = 'primary', style, children, ...rest } = props;
         const { theme } = useTheme();
 

@@ -1,8 +1,8 @@
-import React, { Children, FunctionComponent } from "react";
+import React, { Children, FC } from "react";
 import { Text, TextProps } from "react-native";
 import { useLocalization } from "../LocalizedContext/LocalizationContext";
 
-export const LocalizedText : FunctionComponent<TextProps> = props => {
+export const LocalizedText : FC<TextProps> = props => {
     const { style, children, ...rest } = props;
     const { translate } = useLocalization();
 

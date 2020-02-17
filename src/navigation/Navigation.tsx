@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { Theme as NavigationTheme } from '@react-navigation/native/lib/typescript/src/types';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { useTheme } from '../components/ThemeContext/ThemeContext';
 import { ModalScreen } from '../screens/modal/Modal';
 import { WelcomeScreen } from '../screens/welcome/Welcome';
@@ -17,7 +17,7 @@ export type StackArguments = {
 
 const Stack = createStackNavigator<StackArguments>();
 
-export const Navigation : FunctionComponent = () => {  
+export const Navigation : FC = () => {  
     const { theme } = useTheme();
 
     const getNavigationTheme = () : NavigationTheme => {

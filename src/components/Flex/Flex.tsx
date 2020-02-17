@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import { FlexProps } from "./FlexProps";
 
-export const Row : FunctionComponent<FlexProps> = props => {
+export const Row : FC<FlexProps> = props => {
     const { reverse, alignItems, justifyContent, style, children, ...rest } = props;
     const direction = reverse ? 'row-reverse' : 'row';
 
@@ -13,7 +13,7 @@ export const Row : FunctionComponent<FlexProps> = props => {
     );
 }
 
-export const Column : FunctionComponent<FlexProps> = props => {
+export const Column : FC<FlexProps> = props => {
     const { reverse, alignItems, justifyContent, style, children, ...rest } = props;
     const direction = reverse ? 'column-reverse' : 'column';
 

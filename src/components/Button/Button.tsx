@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import { ButtonProps } from "./ButtonProps";
 
-export const Button : FunctionComponent<ButtonProps> = props => {
+export const Button : FC<ButtonProps> = props => {
     const { effect = 'none', style, children, ...rest } = props;
 
     const computeType = (touchableEffect : string) => {

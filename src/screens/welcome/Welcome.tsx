@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { Column, Row } from "../../components/Flex/Flex";
 import { useLocalization } from "../../components/LocalizedContext/LocalizationContext";
@@ -6,7 +6,7 @@ import { useTheme } from "../../components/ThemeContext/ThemeContext";
 import { Themed } from "../../components/Themed/Themed";
 import { NavigationScreenProps } from "../../navigation/NavigationScreenProps";
 
-export const WelcomeScreen : FunctionComponent<NavigationScreenProps<'Welcome'>> = props => {
+export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
     const { navigation } = props;
     const { theme, supportedThemes, changeTheme } = useTheme();
     const { supportedLanguages, changeLanguage } = useLocalization();
