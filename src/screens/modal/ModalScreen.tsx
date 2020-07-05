@@ -2,11 +2,12 @@ import Close from '@assets/icons/close.svg';
 import { Button } from '@components/Button/Button';
 import { Column, Row } from "@components/Flex/Flex";
 import { Themed } from "@components/Themed/Themed";
-import { NavigationScreenProps } from "@navigation/NavigationScreenProps";
-import React, { FC } from "react";
+import { NavigationScreen } from "@navigation/NavigationTypings";
+import { Route } from 'models/constants/Route';
+import React from "react";
 import { StyleSheet } from "react-native";
 
-export const ModalScreen : FC<NavigationScreenProps<'Modal'>> = props => {
+export const ModalScreen : NavigationScreen<Route.MODAL> = props => {
     const { navigation, route } = props;
 
     const dimiss = () => {

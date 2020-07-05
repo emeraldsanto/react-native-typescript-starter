@@ -1,26 +1,19 @@
+import { useTheme } from '@components/ThemeContext/ThemeContext';
 import { NavigationContainer } from '@react-navigation/native';
 import { Theme as NavigationTheme } from '@react-navigation/native/lib/typescript/src/types';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { FC, ReactNode } from 'react';
-import { useTheme } from '../components/ThemeContext/ThemeContext';
-import { ModalScreen } from '../screens/modal/Modal';
-import { WelcomeScreen } from '../screens/welcome/Welcome';
-import { modalStyleInterpolator } from './Interpolators';
-
-export type StackArguments = {
-    Welcome : {},
-    Modal : {
-        builder : () => ReactNode,
-        onClose? : () => void;
-    }
-}
+import { ModalScreen } from '@screens/modal/ModalScreen';
+import { WelcomeScreen } from '@screens/welcome/WelcomeScreen';
+import { Route } from 'models/constants/Route';
+import React, { FC, useMemo } from 'react';
+import { MODAL_SCREEN_OPTIONS, ROOT_STACK_OPTIONS, StackArguments } from './NavigationTypings';
 
 const Stack = createStackNavigator<StackArguments>();
 
 export const Navigation : FC = () => {  
     const { theme } = useTheme();
 
-    const getNavigationTheme = () : NavigationTheme => {
+    const navigationTheme: NavigationTheme = useMemo(() => {
         return {
             dark : theme.dark,
             colors : {
@@ -31,13 +24,13 @@ export const Navigation : FC = () => {
                 text : theme.colors.onSurface
             }
         }
-    }
+    }, [theme]);
 
     return (
-        <NavigationContainer theme={getNavigationTheme()}>
-            <Stack.Navigator screenOptions={{ title : "Starter", cardOverlayEnabled : true, cardStyle : { backgroundColor : 'transparent' }, cardStyleInterpolator : modalStyleInterpolator }} mode='modal'>
-                <Stack.Screen name='Welcome' component={WelcomeScreen} />
-                <Stack.Screen name="Modal" component={ModalScreen} options={{ headerShown : false }} />
+        <NavigationContainer theme={navigationTheme}>
+            <Stack.Navigator mode="modal" screenOptions={ROOT_STACK_OPTIONS}>
+                <Stack.Screen name={Route.WELCOME} component={WelcomeScreen} />
+                <Stack.Screen name={Route.MODAL} component={ModalScreen} options={MODAL_SCREEN_OPTIONS} />
             </Stack.Navigator>
         </NavigationContainer>
     );

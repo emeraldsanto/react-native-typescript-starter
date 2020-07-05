@@ -1,18 +1,19 @@
-import React, { FC } from "react";
-import { StyleSheet, View } from "react-native";
+import { Route } from "models/constants/Route";
+import React from "react";
+import { StyleSheet } from "react-native";
 import { Column, Row } from "../../components/Flex/Flex";
 import { useLocalization } from "../../components/LocalizedContext/LocalizationContext";
 import { useTheme } from "../../components/ThemeContext/ThemeContext";
 import { Themed } from "../../components/Themed/Themed";
-import { NavigationScreenProps } from "../../navigation/NavigationScreenProps";
+import { NavigationScreen } from "../../navigation/NavigationTypings";
 
-export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
+export const WelcomeScreen : NavigationScreen<Route.WELCOME> = props => {
     const { navigation } = props;
     const { theme, supportedThemes, changeTheme } = useTheme();
     const { supportedLanguages, changeLanguage } = useLocalization();
 
     const showHelp = () => {
-        navigation.navigate('Modal', {
+        navigation.navigate(Route.MODAL, {
             builder : () => (
                 <Column alignItems='center' justifyContent='center'>
                     <Themed.LocalizedText style={style.modalTitle}>
@@ -34,7 +35,7 @@ export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
     }
 
     return (
-        <View style={[style.container, { backgroundColor : theme.colors.background }]}>
+        <Column alignItems="center" justifyContent="center" style={[style.container, { backgroundColor : theme.colors.background }]}>
             <Column alignItems='center' justifyContent='center' style={[style.column, { borderColor : theme.colors.onSurface }]}>
                 <Themed.LocalizedText style={style.title}>
                     welcomeToStarter
@@ -45,7 +46,7 @@ export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
                 </Themed.LocalizedText>
             </Column>
 
-            <View style={style.buttons}>
+            <Column style={style.buttons}>
                 {supportedThemes.map(t => (
                     <Themed.Button key={t.name} context='primary' effect='opacity' style={style.button} onPress={() => changeTheme(t)}>
                         <Themed.LocalizedText context='onPrimary' style={style.center}>
@@ -57,9 +58,9 @@ export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
                         </Themed.LocalizedText>
                     </Themed.Button>
                 ))}
-            </View>
+            </Column>
 
-            <View style={style.buttons}>
+            <Column style={style.buttons}>
                 {supportedLanguages.map(t => (
                     <Themed.Button key={t} context='secondary' effect='opacity' style={style.button} onPress={() => changeLanguage(t)}>
                         <Themed.LocalizedText context='onPrimary' style={style.center}>
@@ -71,7 +72,7 @@ export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
                         </Themed.LocalizedText>
                     </Themed.Button>
                 ))}
-            </View>
+            </Column>
 
             <Row justifyContent='space-between' style={style.buttons}>
                 <Themed.Button context='secondaryVariant' effect='opacity' style={style.smallButton} onPress={showHelp}>
@@ -86,18 +87,15 @@ export const WelcomeScreen : FC<NavigationScreenProps<'Welcome'>> = props => {
                     </Themed.LocalizedText>
                 </Themed.Button>
             </Row>
-        </View>
+        </Column>
     );
 }
 
 const style = StyleSheet.create({
     container : {
         flex : 1,
-        alignItems : "center",
-        justifyContent : 'center',
         padding : 15
     },
-
     column : {
         width : '100%',
         padding : 15,
@@ -105,44 +103,36 @@ const style = StyleSheet.create({
         borderWidth : 1,
         marginBottom : 15,
     },
-
     title : {
         textAlign : 'center',
         fontSize : 24,
         marginBottom : 14
     },
-
     sub : {
         textAlign : 'center',
         fontSize : 18,
         marginBottom : 15
     },
-
     buttons : {
         width : '100%',
     },
-
     button : {
         width : '100%',
         marginBottom : 15,
         borderRadius : 6
     },
-
     smallButton : {
         width : '48%',
         borderRadius : 6
     },
-
     center : {
         textAlign : 'center'
     },
-
     modalTitle : {
         fontSize : 18,
         fontWeight : '700',
         marginBottom : 15
     },
-
     modalText : {
         fontSize : 14
     }
