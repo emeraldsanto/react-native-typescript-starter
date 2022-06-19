@@ -15,6 +15,9 @@ module.exports = {
     project
   },
   plugins: ['@typescript-eslint'],
+  rules: {
+    'no-void': 'off',
+  },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
