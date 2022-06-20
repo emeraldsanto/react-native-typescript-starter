@@ -1,0 +1,14 @@
+{
+  "common": {
+    "error": "An error occurred 😭",
+    "loading": "Loading..."
+  },
+  "home-screen": {
+    "header": "Home",
+    "empty": "No data found"
+  },
+  "details-screen": {
+    "header": "Detail",
+    "title": "You're viewing details of ID #{{id}}"
+  }
+}
