@@ -20,21 +20,29 @@ export const Home: NavigationScreen<Screen.Home> = ({ navigation }) => {
     title: t('header'),
   });
 
+  if (isLoading) {
+    return (
+      <Row alignItems="center" flex={1} flexGap={5} justifyContent="center">
+        <Text>{t('loading')}</Text>
+        <ActivityIndicator />
+      </Row>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <Column alignItems="center" flex={1} justifyContent="center">
+        <Text>Uh oh...</Text>
+      </Column>
+    );
+  }
+
   return (
     <FlatList
       {...{ data }}
       ListEmptyComponent={
         <Column alignItems="center" flex={1} justifyContent="center">
-          {error ? (
-            <Text>Uh oh...</Text>
-          ) : isLoading ? (
-            <Row>
-              <Text>{t('loading')}</Text>
-              <ActivityIndicator />
-            </Row>
-          ) : (
-            <Text>{t('empty')}</Text>
-          )}
+          <Text>{t('empty')}</Text>
         </Column>
       }
       renderItem={({ item }) => (

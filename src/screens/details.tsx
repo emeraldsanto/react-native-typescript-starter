@@ -19,7 +19,7 @@ export const Details: NavigationScreen<Screen.Details> = ({
 
   if (isLoading) {
     return (
-      <Row alignItems="center" flex={1} justifyContent="center">
+      <Row alignItems="center" flex={1} flexGap={5} justifyContent="center">
         <Text>{t('loading')}</Text>
         <ActivityIndicator />
       </Row>
