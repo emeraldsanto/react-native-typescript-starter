@@ -10,17 +10,17 @@ export const Details: NavigationScreen<Screen.Details> = ({
   navigation,
   route,
 }) => {
-  const { t } = useTranslation(Screen.Details);
+  const { t } = useTranslation();
   const { data, error, isLoading } = usePost(route.params.id);
 
   useNavigationOptions(navigation, {
-    title: t('header'),
+    title: t('header', { ns: Screen.Details }),
   });
 
   if (isLoading) {
     return (
       <Row alignItems="center" flex={1} flexGap={5} justifyContent="center">
-        <Text>{t('loading')}</Text>
+        <Text>{t('loading', { ns: 'common' })}</Text>
         <ActivityIndicator />
       </Row>
     );
@@ -29,7 +29,7 @@ export const Details: NavigationScreen<Screen.Details> = ({
   if (error || !data) {
     return (
       <Column alignItems="center" flex={1} justifyContent="center">
-        <Text>Uh oh...</Text>
+        <Text>{t('error', { ns: 'common' })}</Text>
       </Column>
     );
   }

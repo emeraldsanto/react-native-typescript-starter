@@ -1,7 +1,11 @@
 {
+  "common": {
+    "error": "Une erreur est survenue 😭",
+    "loading": "Chargement..."
+  },
   "home-screen": {
     "header": "Accueil",
-    "title": "Voir les détails d'un ID aléatoire"
+    "empty": "Aucun élément à afficher"
   },
   "details-screen": {
     "header": "Détails",

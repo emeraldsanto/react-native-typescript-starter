@@ -13,17 +13,17 @@ import {
 } from 'react-native';
 
 export const Home: NavigationScreen<Screen.Home> = ({ navigation }) => {
-  const { t } = useTranslation(Screen.Home);
+  const { t } = useTranslation();
   const { data, error, isLoading } = usePosts();
 
   useNavigationOptions(navigation, {
-    title: t('header'),
+    title: t('header', { ns: Screen.Home }),
   });
 
   if (isLoading) {
     return (
       <Row alignItems="center" flex={1} flexGap={5} justifyContent="center">
-        <Text>{t('loading')}</Text>
+        <Text>{t('loading', { ns: 'common' })}</Text>
         <ActivityIndicator />
       </Row>
     );
@@ -32,7 +32,7 @@ export const Home: NavigationScreen<Screen.Home> = ({ navigation }) => {
   if (error || !data) {
     return (
       <Column alignItems="center" flex={1} justifyContent="center">
-        <Text>Uh oh...</Text>
+        <Text>{t('error', { ns: 'common' })}</Text>
       </Column>
     );
   }
@@ -42,7 +42,7 @@ export const Home: NavigationScreen<Screen.Home> = ({ navigation }) => {
       {...{ data }}
       ListEmptyComponent={
         <Column alignItems="center" flex={1} justifyContent="center">
-          <Text>{t('empty')}</Text>
+          <Text>{t('empty', { ns: Screen.Home })}</Text>
         </Column>
       }
       renderItem={({ item }) => (

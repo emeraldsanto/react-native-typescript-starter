@@ -1,7 +1,11 @@
 {
+  "common": {
+    "error": "An error occurred 😭",
+    "loading": "Loading..."
+  },
   "home-screen": {
     "header": "Home",
-    "title": "View details of a random ID"
+    "empty": "No data found"
   },
   "details-screen": {
     "header": "Detail",
