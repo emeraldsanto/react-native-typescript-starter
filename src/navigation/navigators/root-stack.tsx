@@ -6,7 +6,7 @@ import { Home } from 'app/screens/home';
 
 export interface RootScreenParameters extends ParamListBase {
   [Screen.Home]: undefined;
-  [Screen.Details]: { id: string };
+  [Screen.Details]: { id: number };
 }
 
 const Root = createNativeStackNavigator<RootScreenParameters>();
