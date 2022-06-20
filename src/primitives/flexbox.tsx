@@ -1,22 +1,18 @@
-import type { ReactNode } from 'react';
 import type { ViewProps, ViewStyle } from 'react-native';
 import { View } from 'react-native';
 
-export interface FlexProps
-  extends ViewProps,
-    Pick<
-      ViewStyle,
-      | 'alignItems'
-      | 'flex'
-      | 'flexBasis'
-      | 'flexDirection'
-      | 'flexGrow'
-      | 'flexShrink'
-      | 'flexWrap'
-      | 'justifyContent'
-    > {
-  children?: ReactNode;
-}
+export type FlexProps = ViewProps &
+  Pick<
+    ViewStyle,
+    | 'alignItems'
+    | 'flex'
+    | 'flexBasis'
+    | 'flexDirection'
+    | 'flexGrow'
+    | 'flexShrink'
+    | 'flexWrap'
+    | 'justifyContent'
+  >;
 
 export function Flex({
   flex,
