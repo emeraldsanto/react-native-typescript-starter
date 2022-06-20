@@ -3,7 +3,11 @@ import type {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 import type { Screen, ScreenParameters } from '../navigation/types';
-import { useNavigation as useReactNavigation } from '@react-navigation/native';
+import type { RouteProp } from '@react-navigation/native';
+import {
+  useNavigation as useReactNavigation,
+  useRoute as useReactRoute,
+} from '@react-navigation/native';
 import { useEffect } from 'react';
 
 export function useNavigation<T extends Screen>(
@@ -19,4 +23,8 @@ export function useNavigation<T extends Screen>(
   }, [options, navigation]);
 
   return navigation;
+}
+
+export function useRoute<T extends Screen>() {
+  return useReactRoute<RouteProp<ScreenParameters, T>>();
 }

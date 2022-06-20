@@ -1,5 +1,8 @@
 {
   "home-screen": {
     "header": "Accueil"
+  },
+  "details-screen": {
+    "header": "Détails {{id}}"
   }
 }
