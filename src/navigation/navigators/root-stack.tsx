@@ -1,9 +1,15 @@
+import type { ParamListBase } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Screen } from 'app/navigation/types';
 import { Details } from 'app/screens/details';
 import { Home } from 'app/screens/home';
 
-const Root = createNativeStackNavigator();
+export interface RootScreenParameters extends ParamListBase {
+  [Screen.Home]: undefined;
+  [Screen.Details]: { id: string };
+}
+
+const Root = createNativeStackNavigator<RootScreenParameters>();
 
 export function RootStackNavigator() {
   return (

@@ -27,6 +27,12 @@ module.exports = {
         'no-undef': 'off',
       },
     },
+    {
+      files: ['./src/screens/*'],
+      rules: {
+        'react/function-component-definition': 'off'
+      }
+    }
   ],
   settings: {
     'import/resolver': {

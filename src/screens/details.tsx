@@ -1,14 +1,17 @@
-import { useNavigation, useRoute } from 'app/hooks/navigation';
+import { useNavigationOptions } from 'app/hooks/navigation';
+import type { NavigationScreen } from 'app/navigation/types';
 import { Screen } from 'app/navigation/types';
 import { Column } from 'app/primitives/flexbox';
 import { useTranslation } from 'react-i18next';
 import { Text } from 'react-native';
 
-export function Details() {
-  const route = useRoute<Screen.Details>();
+export const Details: NavigationScreen<Screen.Details> = ({
+  navigation,
+  route,
+}) => {
   const { t } = useTranslation(Screen.Details);
 
-  useNavigation<Screen.Details>({
+  useNavigationOptions(navigation, {
     title: t('header'),
   });
 
@@ -17,4 +20,4 @@ export function Details() {
       <Text>{t('title', { id: route.params.id })}</Text>
     </Column>
   );
-}
+};

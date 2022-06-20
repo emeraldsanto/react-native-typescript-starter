@@ -1,12 +1,14 @@
-import { useNavigation } from 'app/hooks/navigation';
+import { useNavigationOptions } from 'app/hooks/navigation';
+import type { NavigationScreen } from 'app/navigation/types';
 import { Screen } from 'app/navigation/types';
 import { Column } from 'app/primitives/flexbox';
 import { useTranslation } from 'react-i18next';
 import { Button, Text } from 'react-native';
 
-export function Home() {
+export const Home: NavigationScreen<Screen.Home> = ({ navigation }) => {
   const { t } = useTranslation(Screen.Home);
-  const navigation = useNavigation<Screen.Home>({
+
+  useNavigationOptions(navigation, {
     title: t('header'),
   });
 
@@ -23,4 +25,4 @@ export function Home() {
       />
     </Column>
   );
-}
+};
