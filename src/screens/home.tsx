@@ -1,7 +1,8 @@
 import { useNavigation } from 'app/hooks/navigation';
 import { Screen } from 'app/navigation/types';
+import { Column } from 'app/primitives/flexbox';
 import { useTranslation } from 'react-i18next';
-import { Button, Text, View } from 'react-native';
+import { Button, Text } from 'react-native';
 
 export function Home() {
   const { t } = useTranslation(Screen.Home);
@@ -10,8 +11,8 @@ export function Home() {
   });
 
   return (
-    <View>
-      <Text>Salut</Text>
+    <Column alignItems="center" flex={1} justifyContent="center">
+      <Text>{t('title')}</Text>
       <Button
         onPress={() =>
           navigation.navigate(Screen.Details, {
@@ -20,6 +21,6 @@ export function Home() {
         }
         title="Open modal"
       />
-    </View>
+    </Column>
   );
 }

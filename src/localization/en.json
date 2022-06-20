@@ -1,8 +1,10 @@
 {
   "home-screen": {
-    "header": "Home"
+    "header": "Home",
+    "title": "View details of a random ID"
   },
   "details-screen": {
-    "header": "Detail {{id}}"
+    "header": "Detail",
+    "title": "You're viewing details of ID #{{id}}"
   }
 }
