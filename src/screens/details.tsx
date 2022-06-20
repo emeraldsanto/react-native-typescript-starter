@@ -1,7 +1,7 @@
+import { useNavigation, useRoute } from 'app/hooks/navigation';
+import { Screen } from 'app/navigation/types';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
-import { useNavigation, useRoute } from '../hooks/navigation';
-import { Screen } from '../navigation/types';
 
 export function Details() {
   const route = useRoute<Screen.Details>();

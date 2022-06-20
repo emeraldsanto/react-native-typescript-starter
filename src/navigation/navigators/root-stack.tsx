@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Details } from '../../screens/details';
-import { Home } from '../../screens/home';
-import { Screen } from '../types';
+import { Screen } from 'app/navigation/types';
+import { Details } from 'app/screens/details';
+import { Home } from 'app/screens/home';
 
 const Root = createNativeStackNavigator();
 

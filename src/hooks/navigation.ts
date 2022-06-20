@@ -1,13 +1,13 @@
-import type {
-  NativeStackNavigationOptions,
-  NativeStackNavigationProp,
-} from '@react-navigation/native-stack';
-import type { Screen, ScreenParameters } from '../navigation/types';
 import type { RouteProp } from '@react-navigation/native';
 import {
   useNavigation as useReactNavigation,
   useRoute as useReactRoute,
 } from '@react-navigation/native';
+import type {
+  NativeStackNavigationOptions,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
+import type { Screen, ScreenParameters } from 'app/navigation/types';
 import { useEffect } from 'react';
 
 export function useNavigation<T extends Screen>(
