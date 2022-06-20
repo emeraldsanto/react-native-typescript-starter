@@ -1,0 +1,10 @@
+{
+  "home-screen": {
+    "header": "Accueil",
+    "title": "Voir les détails d'un ID aléatoire"
+  },
+  "details-screen": {
+    "header": "Détails",
+    "title": "Voici les détails de l'ID #{{id}}"
+  }
+}

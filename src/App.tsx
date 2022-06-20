@@ -1,19 +1,13 @@
-import React, { FC } from "react";
-import { LocalizationContextProvider } from "./components/LocalizedContext/LocalizationContextProvider";
-import { Theme } from "./components/ThemeContext/ThemeContext";
-import { ThemeContextProvider } from "./components/ThemeContext/ThemeContextProvider";
-import themes from './config/themes.json';
-import translations from "./localization/translations.json";
-import { Navigation } from "./navigation/Navigation";
+import { NavigationContainer } from '@react-navigation/native';
+import { RootStackNavigator } from 'app/navigation/navigators/root-stack';
+import { NativeSWRConfig } from 'swr-native';
 
-export const App : FC = () => {
-    const initialTheme : Theme = themes[0];
-
-    return (
-        <ThemeContextProvider initialTheme={initialTheme} supportedThemes={themes}>
-            <LocalizationContextProvider initialLanguage='fr' supportedLanguages={['fr', 'en']} translations={translations}>
-                <Navigation />
-            </LocalizationContextProvider>
-        </ThemeContextProvider>
-    );
+export function App() {
+  return (
+    <NativeSWRConfig>
+      <NavigationContainer>
+        <RootStackNavigator />
+      </NavigationContainer>
+    </NativeSWRConfig>
+  );
 }

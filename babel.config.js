@@ -1,31 +1,17 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
-  plugins : [
+  presets: [
+    ['module:metro-react-native-babel-preset', { useTransformReactJSXExperimental: true }],
+  ],
+  plugins: [
+    ['@babel/plugin-transform-react-jsx', { 'runtime': 'automatic' }],
     [
       'module-resolver',
       {
-        root : ['./src'],
-        extensions : [
-          '.ios.ts',
-          '.android.ts',
-          '.ts',
-          '.ios.tsx',
-          '.android.tsx',
-          '.tsx',
-          '.jsx',
-          '.js',
-          '.json',
-        ],
+        root: ['.'],
         alias: {
-          "@assets" : "./src/assets",
-          "@config" : "./src/config",
-          "@components" : "./src/components",
-          "@localization" : "./src/localization",
-          "@navigation" : "./src/navigation",
-          "@network" : "./src/network",
-          "@screens" : "./src/screens"
-        }
+          'app': './src',
+        }, 
       }
     ]
-  ]
+  ],
 };
