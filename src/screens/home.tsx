@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Text, View } from 'react-native';
 import { useNavigation } from '../hooks/navigation';
